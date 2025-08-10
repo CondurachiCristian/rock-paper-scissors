@@ -24,61 +24,71 @@ function getHumanChoice() {
    return huSelection
 };
 
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
 
-let humanScore = 0 ;
+function playGame () {
+    let humanScore = 0 ;
+    let computerScore = 0 ; 
+    function playRound (humanChoice , computerChoice) {
+        humanSelection = getHumanChoice();
+        computerSelection = getComputerChoice();
+        if (humanChoice === computerChoice) {
+            console.log(humanChoice,computerChoice);
+            console.log(humanScore,computerScore);
+            console.log("TIE!");
+            return
+        } else if (humanChoice === computerChoice) {
+            console.log(humanChoice,computerChoice);
+            console.log(humanScore,computerScore);
+            console.log("TIE!");
+            return
+        } else if (humanChoice === computerChoice) {
+            console.log(humanChoice,computerChoice);
+            console.log(humanScore,computerScore);
+            console.log("TIE!");
+            return
+        } else if (humanChoice === "ROCK" && computerChoice === "SCISSORS") {
+            humanScore = ++humanScore;
+            console.log(humanChoice,computerChoice);
+            console.log(humanScore,computerScore);
+            console.log("Human Wins!");
+            return
+        } else if (humanChoice === "SCISSORS" && computerChoice === "PAPER") {
+            humanScore = ++humanScore;
+            console.log(humanChoice,computerChoice);
+            console.log(humanScore,computerScore);
+            console.log("Human Wins!");
+            return
+        } else if (humanChoice === "PAPER" && computerChoice === "ROCK") {
+            humanScore = ++humanScore;
+            console.log(humanChoice,computerChoice);
+            console.log(humanScore,computerScore);
+            console.log("Human Wins!");
+            return
+        } else if (computerChoice === "ROCK" && humanChoice === "SCISSORS") {
+            computerScore = ++computerScore;
+            console.log(humanChoice,computerChoice);
+            console.log(humanScore,computerScore);
+            console.log("Computer Wins!");
+            return
+        } else if (computerChoice === "SCISSORS" && humanChoice === "PAPER") {
+            computerScore = ++computerScore;
+            console.log(humanChoice,computerChoice);
+            console.log(humanScore,computerScore);
+            console.log("Computer Wins!");
+            return
+        } else if (computerChoice === "PAPER" && humanChoice === "ROCK") {
+            computerScore = ++computerScore;
+            console.log(humanChoice,computerChoice);
+            console.log(humanScore,computerScore);
+            console.log("Computer Wins!");
+            return
+        }
+    };
+    while (humanScore < 5 && computerScore < 5) {
+        playRound(humanSelection, computerSelection);
+    };
+}
 
-let computerScore = 0 ;
-
-function playRound (humanChoice , computerChoice) {
-    if (humanChoice === computerChoice) {
-        console.log(humanChoice,computerChoice);
-        console.log("TIE!");
-        return
-    } else if (humanChoice === computerChoice) {
-        console.log(humanChoice,computerChoice);
-        console.log("TIE!");
-        return
-    } else if (humanChoice === computerChoice) {
-        console.log(humanChoice,computerChoice);
-        console.log("TIE!");
-        return
-    } else if (humanChoice === "ROCK" && computerChoice === "SCISSORS") {
-        ++humanScore
-        console.log(humanChoice,computerChoice);
-        console.log("Human Wins!");
-        return
-    } else if (humanChoice === "SCISSORS" && computerChoice === "PAPER") {
-        ++humanScore
-        console.log(humanChoice,computerChoice);
-        console.log("Human Wins!");
-        return
-    } else if (humanChoice === "PAPER" && computerChoice === "ROCK") {
-        ++humanScore
-        console.log(humanChoice,computerChoice);
-        console.log("Human Wins!");
-        return
-    } else if (computerChoice === "ROCK" && humanChoice === "SCISSORS") {
-        ++computerScore
-        console.log(humanChoice,computerChoice);
-        console.log("Computer Wins!");
-        return
-    } else if (computerChoice === "SCISSORS" && humanChoice === "PAPER") {
-        ++computerScore
-        console.log(humanChoice,computerChoice);
-        console.log("Computer Wins!");
-        return
-    } else if (computerChoice === "PAPER" && humanChoice === "ROCK") {
-        ++computerScore
-        console.log(humanChoice,computerChoice);
-        console.log("Computer Wins!");
-        return
-    }
-};
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
-
-console.log(humanScore);
-console.log(computerScore);
+playGame();
