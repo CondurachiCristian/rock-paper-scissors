@@ -92,3 +92,16 @@ function playGame () {
 }
 
 playGame();
+
+const resultsDiv = document.querySelector("#resultsDiv");
+
+const playBtn = document.querySelector("#playBtn");
+playBtn.addEventListener("click", playRound);
+
+const rockBtn = document.querySelector("#rockBtn");
+
+const paperBtn = document.querySelector("#paperBtn");
+
+const scissorsBtn = document.querySelector("#scissorsBtn");
+
+// Add eventlistener to all player selection button and return the specific button value as humanChoice
