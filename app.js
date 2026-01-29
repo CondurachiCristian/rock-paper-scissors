@@ -6,33 +6,40 @@
     REPEAT sequence UNTIL score of 5 is reached by either user or computer
 */
 
-function getComputerChoice() {
-    coSelection = Math.floor(Math.random() * 3);
+const resultsDiv = document.querySelector("#resultsDiv");
 
-    if (coSelection == 0) {
-        coSelection = "ROCK";
-    } else if (coSelection == 1) {
-        coSelection = "PAPER";
-    } else {
-        coSelection = "SCISSORS";
-    }
-    return coSelection
-};
+const playBtn = document.querySelector("#playBtn");
+playBtn.addEventListener("click", playGame);
 
-function getHumanChoice() {
-   huSelection = prompt("Rock , Paper or Scissors?").toUpperCase();
-   return huSelection
-};
-
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
+const rockBtn = document.querySelector("#rockBtn");
+const paperBtn = document.querySelector("#paperBtn");
+const scissorsBtn = document.querySelector("#scissorsBtn");
 
 function playGame () {
+
+    /* function getHumanChoice() {
+    huSelection = prompt("Rock , Paper or Scissors?").toUpperCase();
+    return huSelection
+    }; */
+
+    function getComputerChoice() {
+        coSelection = Math.floor(Math.random() * 3);
+        if (coSelection == 0) {
+            coSelection = "ROCK";
+        } else if (coSelection == 1) {
+            coSelection = "PAPER";
+        } else {
+            coSelection = "SCISSORS";
+        }
+        return coSelection
+    };
+
+    let humanSelection = getHumanChoice();
+    let computerSelection = getComputerChoice();
     let humanScore = 0 ;
-    let computerScore = 0 ; 
+    let computerScore = 0 ;
+
     function playRound (humanChoice , computerChoice) {
-        humanSelection = getHumanChoice();
-        computerSelection = getComputerChoice();
         if (humanChoice === computerChoice) {
             console.log(humanChoice,computerChoice);
             console.log(humanScore,computerScore);
@@ -86,22 +93,10 @@ function playGame () {
             return
         }
     };
-    while (humanScore < 5 && computerScore < 5) {
+     /*while (humanScore < 5 && computerScore < 5) {
+        humanSelection = getHumanChoice();
+        computerSelection = getComputerChoice();
         playRound(humanSelection, computerSelection);
-    };
-}
-
-playGame();
-
-const resultsDiv = document.querySelector("#resultsDiv");
-
-const playBtn = document.querySelector("#playBtn");
-playBtn.addEventListener("click", playRound);
-
-const rockBtn = document.querySelector("#rockBtn");
-
-const paperBtn = document.querySelector("#paperBtn");
-
-const scissorsBtn = document.querySelector("#scissorsBtn");
-
-// Add eventlistener to all player selection button and return the specific button value as humanChoice
+    }; */
+    //playRound(humanSelection, computerSelection);
+};
