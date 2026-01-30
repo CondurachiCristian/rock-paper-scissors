@@ -6,67 +6,33 @@
     REPEAT sequence UNTIL score of 5 is reached by either user or computer
 */
 
-let isRock = false ;
-let isPaper = false ;
-let isScissors = false ;
+function getComputerChoice() {
+    coSelection = Math.floor(Math.random() * 3);
 
-function makeTrue (falsy) {
-    falsy = true;
-    return falsy
+    if (coSelection == 0) {
+        coSelection = "ROCK";
+    } else if (coSelection == 1) {
+        coSelection = "PAPER";
+    } else {
+        coSelection = "SCISSORS";
+    }
+    return coSelection
 };
 
-const resultsDiv = document.querySelector("#resultsDiv");
-
-const playBtn = document.querySelector("#playBtn");
-playBtn.addEventListener("click", playGame);
-
-const rockBtn = document.querySelector("#rockBtn");
-
-const paperBtn = document.querySelector("#paperBtn");
-
-const scissorsBtn = document.querySelector("#scissorsBtn");
-
-function getHumanChoice () {
-    rockBtn.addEventListener("click", function () {makeTrue(isRock)});
-    paperBtn.addEventListener("clck", function () {makeTrue(isPaper)});
-    scissorsBtn.addEventListener("click", function () {makeTrue(isScissors)});
-
-    let huSelection;
-    if (isRock == true) {
-        huSelection = "ROCK";
-    } else if (isPaper == true) {
-        huSelection = "PAPER";
-    } else if (isScissors == true) {
-        huSelection = "SCISSORS";
-    } return huSelection
+function getHumanChoice() {
+   huSelection = prompt("Rock , Paper or Scissors?").toUpperCase();
+   return huSelection
 };
 
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
 
 function playGame () {
-
-    /* function getHumanChoice() {
-    huSelection = prompt("Rock , Paper or Scissors?").toUpperCase();
-    return huSelection
-    }; */
-
-    function getComputerChoice() {
-        coSelection = Math.floor(Math.random() * 3);
-        if (coSelection == 0) {
-            coSelection = "ROCK";
-        } else if (coSelection == 1) {
-            coSelection = "PAPER";
-        } else {
-            coSelection = "SCISSORS";
-        }
-        return coSelection
-    };
-
-    let humanSelection = getHumanChoice();
-    let computerSelection = getComputerChoice();
     let humanScore = 0 ;
-    let computerScore = 0 ;
-
+    let computerScore = 0 ; 
     function playRound (humanChoice , computerChoice) {
+        humanSelection = getHumanChoice();
+        computerSelection = getComputerChoice();
         if (humanChoice === computerChoice) {
             console.log(humanChoice,computerChoice);
             console.log(humanScore,computerScore);
@@ -120,10 +86,9 @@ function playGame () {
             return
         }
     };
-     /*while (humanScore < 5 && computerScore < 5) {
-        humanSelection = getHumanChoice();
-        computerSelection = getComputerChoice();
+    while (humanScore < 5 && computerScore < 5) {
         playRound(humanSelection, computerSelection);
-    }; */
-    playRound(humanSelection, computerSelection);
-};
+    };
+}
+
+playGame();
