@@ -6,14 +6,41 @@
     REPEAT sequence UNTIL score of 5 is reached by either user or computer
 */
 
+let isRock = false ;
+let isPaper = false ;
+let isScissors = false ;
+
+function makeTrue (falsy) {
+    falsy = true;
+    return falsy
+};
+
 const resultsDiv = document.querySelector("#resultsDiv");
 
 const playBtn = document.querySelector("#playBtn");
 playBtn.addEventListener("click", playGame);
 
 const rockBtn = document.querySelector("#rockBtn");
+
 const paperBtn = document.querySelector("#paperBtn");
+
 const scissorsBtn = document.querySelector("#scissorsBtn");
+
+function getHumanChoice () {
+    rockBtn.addEventListener("click", function () {makeTrue(isRock)});
+    paperBtn.addEventListener("clck", function () {makeTrue(isPaper)});
+    scissorsBtn.addEventListener("click", function () {makeTrue(isScissors)});
+
+    let huSelection;
+    if (isRock == true) {
+        huSelection = "ROCK";
+    } else if (isPaper == true) {
+        huSelection = "PAPER";
+    } else if (isScissors == true) {
+        huSelection = "SCISSORS";
+    } return huSelection
+};
+
 
 function playGame () {
 
@@ -98,5 +125,5 @@ function playGame () {
         computerSelection = getComputerChoice();
         playRound(humanSelection, computerSelection);
     }; */
-    //playRound(humanSelection, computerSelection);
+    playRound(humanSelection, computerSelection);
 };
