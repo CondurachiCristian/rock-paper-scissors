@@ -44,54 +44,67 @@ function getComputerChoice() {
 
 let computerSelection = getComputerChoice();
 
-
+let humanScore = 0 ;
+let computerScore = 0 ;
 
 function playRound (humanChoice , computerChoice) {
-    let humanScore = 0 ;
-    let computerScore = 0 ;
-
     computerSelection = getComputerChoice();
 
     function computerWinsRound () {
         computerScore = ++computerScore;
         choiceDiv.textContent = `${humanChoice} ${computerChoice}`;
         scoreDiv.textContent = `${humanScore} ${computerScore}`;
-        winnerDiv.textContent = "Computer Wins!";
+        winnerDiv.textContent = "Computer Wins Round!";
     };
 
     function humanWinsRound () {
         humanScore = ++humanScore;
-        console.log(humanChoice,computerChoice);
-        console.log(humanScore,computerScore);
-        console.log("Human Wins!");
+        choiceDiv.textContent = `${humanChoice} ${computerChoice}`;
+        scoreDiv.textContent = `${humanScore} ${computerScore}`;
+        winnerDiv.textContent = "Human Wins Round!";
     };
 
     function noWinner () {
-        console.log(humanChoice,computerChoice);
-        console.log(humanScore,computerScore);
-        console.log("TIE!");
+        choiceDiv.textContent = `${humanChoice} ${computerChoice}`;
+        scoreDiv.textContent = `${humanScore} ${computerScore}`;
+        winnerDiv.textContent = "Tie!";
+    };
+
+    function checkGameWinner () {
+        if (humanScore >= 5 && humanScore > computerScore) {
+            winnerDiv.textContent = "HUMAN WINS GAME!!!";
+        } else if (computerScore >= 5 && computerScore > humanScore) {
+            winnerDiv.textContent = "COMPUTER WINS GAME!!!";
+        }
     };
 
     if (humanChoice === computerChoice) {
         noWinner();
+        checkGameWinner();
         return
     } else if (humanChoice === "ROCK" && computerChoice === "SCISSORS") {
         humanWinsRound();
+        checkGameWinner();
         return
     } else if (humanChoice === "ROCK" && computerChoice === "PAPER") {
         computerWinsRound();
+        checkGameWinner();
         return
     } else if (humanChoice === "SCISSORS" && computerChoice === "PAPER") {
         humanWinsRound();
+        checkGameWinner();
         return
     } else if (humanChoice === "SCISSORS" && computerChoice === "ROCK") {
         computerWinsRound();
+        checkGameWinner();
         return
     } else if (humanChoice === "PAPER" && computerChoice === "ROCK") {
         humanWinsRound();
+        checkGameWinner();
         return
     } else if (humanChoice === "PAPER" && computerChoice === "SCISSORS") {
         computerWinsRound();
+        checkGameWinner();
         return
     }
 };
